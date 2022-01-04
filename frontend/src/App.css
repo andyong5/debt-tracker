@@ -4,9 +4,10 @@
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background-color: red;
+  background-color: grey;
   width: 90%;
   height: 50%;
+  border-radius: 12px;
 }
 h1{
   text-align: center;

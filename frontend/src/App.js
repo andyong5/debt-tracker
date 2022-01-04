@@ -1,4 +1,5 @@
 import "./App.css";
+import List from "./List";
 
 function App() {
   return (
@@ -8,9 +9,7 @@ function App() {
           <h1>Debt Collector</h1>
         </div>
         <div className="content">
-          <div className="spacing">
-            hello
-          </div>
+          <List />
         </div>
 
       </div>
