@@ -1,0 +1,35 @@
+CREATE TABLE accounts (
+	user_id serial PRIMARY KEY,
+    name VARCHAR (20) NOT NULL,
+	username VARCHAR ( 50 ) UNIQUE,
+	password VARCHAR ( 50 ),
+	email VARCHAR ( 255 ) UNIQUE,
+    phone VARCHAR (12) UNIQUE,
+    balance INT, 
+	created_on TIMESTAMP NOT NULL,
+    last_login TIMESTAMP
+);
+
+CREATE TABLE transactions (
+	transaction_id serial PRIMARY KEY,
+    trans_date TIMESTAMP NOT NULL,
+    amount INT,
+    debitor INT,
+    creditor INT
+);
+ALTER TABLE transactions
+      ADD CONSTRAINT creditor FOREIGN KEY (creditor) 
+          REFERENCES accounts (user_id);
+
+INSERT into accounts(name, created_on) values('Mom', current_timestamp)
+
+insert into transactions(trans_date, amount, debitor, creditor)
+values(current_timestamp, 100, 3, 2)
+
+SELECT accounts.name Creditor, a.name Debitor, transactions.amount, transactions.trans_date
+FROM transactions
+JOIN accounts
+ON transactions.creditor = accounts.user_id 
+JOIN accounts a 
+ON transactions.debitor = a.user_id
+where accounts.name = 'Andy'
