@@ -46,12 +46,12 @@ const ProductTable = (props) => {
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
 
-  const adjust = (item, id, addOrSubtract) => (event) => {
+  const adjust = (item, id, addorsubtract) => (event) => {
     // let items = pledges.filter((pledge) => pledge.name !== name);
-    // setPledges(items);
-    event.preventDefault();
-    const cost = document.getElementById(id).value;
-    if (addOrSubtract) {
+    // setpledges(items);
+    event.preventdefault();
+    const cost = document.getelementbyid(id).value;
+    if (addorsubtract) {
       console.log("adding money");
       if(item.total > 0){
         items[item.id-1].total = cost + items[item.id-1].total;
@@ -67,11 +67,11 @@ const ProductTable = (props) => {
       items[item.id-1].total = items[item.id-1].total - cost;
         console.log(items[item.id-1]);
     }
-    const formData = new FormData();
-    // formData.append("name", name);
+    const formdata = new formdata();
+    // formdata.append("name", name);
     // fetch("/delete", {
-    //   method: "DELETE",
-    //   body: formData,
+    //   method: "delete",
+    //   body: formdata,
     // })
     //   .then((response) => response.json())
     //   .then((data) => {

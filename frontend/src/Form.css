@@ -1,0 +1,23 @@
+input {
+  margin-bottom: 10px;
+}
+@media only screen and (min-width: 768px) {
+  .form-control {
+    width: 20%;
+  }
+  .sm {
+    width: 8%;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .btn {
+    width: 8%;
+    height: auto;
+  }
+  input {
+    margin-right: 10px;
+  }
+}

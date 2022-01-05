@@ -1,6 +1,6 @@
 import "./App.css";
-import Ta from "./Test";
 import { useEffect, useState } from "react";
+import FormSub from "./Form";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -24,7 +24,7 @@ function App() {
           <div className="spacing">
             <div className="list">
               <h2>List of People</h2>
-              <Ta />
+              <FormSub />
             </div>
           </div>
         </div>
