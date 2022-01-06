@@ -1,7 +1,8 @@
+
 import { useEffect, useState } from "react";
 import "./Form.css";
-function FormSub() {
-  const [name, setName] = useState("");
+function Transactions() {
+  const [name, setName] = useState("Ally");
   const [num, setNum] = useState(0);
   const [description, setDescription] = useState("");
 
@@ -48,32 +49,9 @@ function FormSub() {
 
   return (
     <div>
-      <h3>List of People</h3>
-      <form className="row" onSubmit={handleSubmission}>
-        <input
-          className="form-control form-control-sm"
-          placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
-          required
-        ></input>
-        <input
-          type="number"
-          className="form-control form-control-sm text-success sm"
-          placeholder=""
-          onChange={(e) => setNum(e.target.value)}
-          required
-        ></input>
-        <input
-          className="form-control form-control-sm"
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        ></input>
-        <button type="submit" className="btn btn-primary btn-sm">
-          Submit
-        </button>
-      </form>
+      <h3>Transactions between {name}</h3>
     </div>
   );
 }
 
-export default FormSub;
+export default Transactions;
