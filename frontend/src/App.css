@@ -6,12 +6,13 @@
   transform: translate(-50%, -50%);
   background-color: white;
   width: 90%;
-  height: 50%;
+  height: 90%;
   border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 h1{
   text-align: center;
 }
 .spacing{
-  margin: 10px;
+  margin: 15px;
 }

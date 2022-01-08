@@ -2,6 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import FormSub from "./Form";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Transactions from "./Transactions";
 function User(props) {
   return <h1>Hello {props.match.params.username}!</h1>;
 }
@@ -21,16 +22,13 @@ function App() {
     <Router>
       <div className="App">
         <div className="wrapper">
-          <div className="spacing">
-            <h1>Debt Collector</h1>
-          </div>
+          <div className="spacing">{/* <h1>Debt Collector</h1> */}</div>
 
           <div className="content">
             <div className="spacing">
               <Routes>
-                <Route exact path="/" element={<FormSub />}/>
-                <Route exact path="/" element={<FormSub />}/>
-                
+                <Route exact path="/" element={<FormSub />} />
+                <Route exact path="/user" element={<Transactions />} />
               </Routes>
             </div>
           </div>
