@@ -54,41 +54,49 @@ function FormSub() {
         <div className="direction">
           <Autocomplete suggestions={["Andy", "Sally", "Ally"]} />
           <input
+            className="form-control-sm"
+            id="description"
+            placeholder="Description"
+            onChange={(e) => setDescription(e.target.value)}
+          ></input>
+        </div>
+        <div>
+          <input
             type="number"
+            id="money"
             className="form-control-sm text-success sm"
             placeholder="$"
             onChange={(e) => setNum(e.target.value)}
             required
           ></input>
-        </div>
-        <input
-          className="form-control-sm"
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        ></input>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="exampleRadios"
-            id="exampleRadios1"
-            value="borrow"
-            checked
-          ></input>
-          <label className="form-check-label">Borrow</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input
-            className="form-check-input"
-            type="radio"
-            name="exampleRadios"
-            id="exampleRadios2"
-            value="Return"
-          ></input>
-          <label className="form-check-label">Return</label>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios1"
+              value="borrow"
+              checked
+            ></input>
+            <label className="form-check-label">Borrow</label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="exampleRadios"
+              id="exampleRadios2"
+              value="Return"
+            ></input>
+            <label className="form-check-label">Return</label>
+          </div>
         </div>
         <div>
-          <button type="submit" className="btn btn-primary btn-sm">
+          <button
+            type="submit"
+            id="submit-btn"
+            className="btn btn-primary btn-sm"
+          >
             Submit
           </button>
         </div>

@@ -14,11 +14,19 @@ h3 {
 }
 .direction {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 #name{
-  width: 70%;
-  margin-right: 10px;
+  width: 100%;
+}
+#money{
+  margin-right: 15px;
+}
+#description{
+  width: 100%;
+}
+#submit-btn{
+  width: 100%;
 }
 @media only screen and (min-width: 768px) {
   .form-control-sm {

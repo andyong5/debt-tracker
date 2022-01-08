@@ -1,12 +1,3 @@
-input {
-  border: 1px solid #999;
-  padding: 8px;
-  width: 300px;
-}
-.no-autocomplete {
-  color: #999;
-  padding: 8px;
-}
 .autocomplete {
   border: 1px solid #999;
   border-top-width: 0;
@@ -15,7 +6,6 @@ input {
   max-height: 143px;
   overflow-y: auto;
   padding-left: 0;
-  width: 20%;
 }
 .autocomplete li {
   padding: 8px;
@@ -28,4 +18,15 @@ input {
 }
 .autocomplete li:not(:last-of-type) {
   border-bottom: 1px solid #999;
+}
+@media only screen and (min-width: 768px) {
+  .autocomplete {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    overflow-y: auto;
+    padding-left: 0;
+  }
 }
