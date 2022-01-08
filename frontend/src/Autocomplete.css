@@ -6,6 +6,7 @@
   max-height: 143px;
   overflow-y: auto;
   padding-left: 0;
+  width: 100%;
 }
 .autocomplete li {
   padding: 8px;
@@ -28,5 +29,6 @@
     max-height: 143px;
     overflow-y: auto;
     padding-left: 0;
+    width: 30%;
   }
 }
