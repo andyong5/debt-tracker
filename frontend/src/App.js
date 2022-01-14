@@ -3,21 +3,37 @@ import { useEffect, useState } from "react";
 import FormSub from "./Form";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Transactions from "./Transactions";
-function User(props) {
-  return <h1>Hello {props.match.params.username}!</h1>;
-}
+import Home from "./Home";
+// function User(props) {
+//   return <h1>Hello {props.match.params.username}!</h1>;
+// }
 function App() {
-  const [users, setUsers] = useState([]);
+  const [currUser, setCurrUser] = useState("Andy");
+  const [friends, setFriends] = useState([]);
+  const [totals, setTotals] = useState([]);
 
-  // useEffect(() => {
-  //   fetch("/test2")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setUsers(data);
-  //     })
-  //     .catch((error) => {});
-  // }, []);
+  useEffect(() => {
+    const formData = new FormData();
+    formData.append("currUser", currUser);
+    fetch("/totals", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        var fr = []
+        for(var i=0; i < data.length; i++){
+          fr.push(data[i].name);
+        }
+        setFriends(fr);
+        setTotals(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -27,8 +43,8 @@ function App() {
           <div className="content">
             <div className="spacing">
               <Routes>
-                <Route exact path="/" element={<FormSub />} />
-                <Route exact path="/user" element={<Transactions />} />
+                <Route exact path="/" element={<Home friends={friends} totals={totals}/>} />
+                <Route exact path="/user" element={<Transactions friends={friends} />} />
               </Routes>
             </div>
           </div>

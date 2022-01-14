@@ -20,10 +20,12 @@ app.use(fileupload());
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const testRouter = require("./routes/test");
+const friendsRouter = require("./routes/friends");
+const totalsRouter = require("./routes/totals");
 
 app.use("/users", usersRouter);
-app.use("/test", testRouter);
+app.use("/friends", friendsRouter);
+app.use("/totals", totalsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

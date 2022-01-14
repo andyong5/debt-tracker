@@ -1,30 +1,25 @@
 import { useEffect, useState } from "react";
 import Autocomplete from "./Autocomplete";
 import "./Form.css";
-function FormSub() {
-  const [name, setName] = useState("");
-  const [num, setNum] = useState(0);
+function FormSub({ friends, currUser }) {
+  const [name, setName] = useState(currUser);
+  const [num, setNum] = useState(null);
   const [description, setDescription] = useState("");
-
-  // useEffect(() => {
-  //   fetch("/test2")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setUsers(data);
-  //     })
-  //     .catch((error) => {});
-  // }, []);
+  const [action, setAction] = useState("borrow");
 
   const handleSubmission = (event) => {
     event.preventDefault();
     console.log(name);
     console.log(num);
     console.log(description);
+    console.log(action);
     const formData = new FormData();
     formData.append("name", name);
     formData.append("num", num);
     formData.append("description", description);
+
+    setDescription("");
+    setNum(0);
     // fetch("/reveal", {
     //   method: "POST",
     //   body: formData,
@@ -49,15 +44,18 @@ function FormSub() {
 
   return (
     <div>
-      <h3>List of People</h3>
       <form onSubmit={handleSubmission}>
         <div className="direction">
-          <Autocomplete suggestions={["Andy", "Sally", "Ally"]} />
+          {name ? null : (
+            <Autocomplete suggestions={friends} />
+          )}
           <input
             className="form-control-sm"
             id="description"
             placeholder="Description"
+            value={description}
             onChange={(e) => setDescription(e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -66,6 +64,7 @@ function FormSub() {
             id="money"
             className="form-control-sm text-success sm"
             placeholder="$"
+            value={num}
             onChange={(e) => setNum(e.target.value)}
             required
           ></input>
@@ -75,7 +74,7 @@ function FormSub() {
               type="radio"
               name="exampleRadios"
               id="exampleRadios1"
-              value="borrow"
+              onClick={() => setAction("borrow")}
               checked
             ></input>
             <label className="form-check-label">Borrow</label>
@@ -86,7 +85,7 @@ function FormSub() {
               type="radio"
               name="exampleRadios"
               id="exampleRadios2"
-              value="Return"
+              onClick={() => setAction("return")}
             ></input>
             <label className="form-check-label">Return</label>
           </div>

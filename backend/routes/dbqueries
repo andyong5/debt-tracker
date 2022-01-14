@@ -5,31 +5,66 @@ CREATE TABLE accounts (
 	password VARCHAR ( 50 ),
 	email VARCHAR ( 255 ) UNIQUE,
     phone VARCHAR (12) UNIQUE,
-    balance INT, 
+    balance INT default 0, 
 	created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP
 );
+INSERT into accounts(name, created_on) values('Mom', current_timestamp)
+
+CREATE TABLE friends (
+    user1 int,
+    user2 int
+);
+ALTER TABLE friends ADD CONSTRAINT user1 FOREIGN KEY (user1) REFERENCES accounts (user_id);
+ALTER TABLE friends ADD CONSTRAINT user2 FOREIGN KEY (user2) REFERENCES accounts (user_id);
+insert into friends(user1, user2) values(2,1);
+select acc2.name from accounts acc1 join friends on acc1.user_id = friends.user1 join accounts acc2 on friends.user2 = acc2.user_id where acc1.name = 'Andy';
 
 CREATE TABLE transactions (
 	transaction_id serial PRIMARY KEY,
     trans_date TIMESTAMP NOT NULL,
     amount INT,
+    description VARCHAR (50) NOT NULL,
     debitor INT,
     creditor INT
 );
+
 ALTER TABLE transactions
       ADD CONSTRAINT creditor FOREIGN KEY (creditor) 
           REFERENCES accounts (user_id);
 
-INSERT into accounts(name, created_on) values('Mom', current_timestamp)
+insert into transactions(trans_date, amount, debitor, creditor, description)
+values(current_timestamp, 200, 3,1, 'test');
 
-insert into transactions(trans_date, amount, debitor, creditor)
-values(current_timestamp, 100, 3, 2)
 
-SELECT accounts.name Creditor, a.name Debitor, transactions.amount, transactions.trans_date
+SELECT a.name Debitor, t.amount, t.description, transactions.trans_date
+FROM transactions as t
+JOIN accounts
+ON t.creditor = accounts.user_id 
+JOIN accounts a 
+ON t.debitor = a.user_id
+where accounts.name = 'Mom'
+
+
+//Adds all the total with all the debitors
+SELECT a.name Debitor, sum(transactions.amount)
 FROM transactions
 JOIN accounts
 ON transactions.creditor = accounts.user_id 
 JOIN accounts a 
 ON transactions.debitor = a.user_id
-where accounts.name = 'Andy'
+where accounts.name = 'Mom'
+GROUP BY
+    a.name
+ORDER BY
+	a.name
+
+SELECT a.name Debitor, sum(t.amount)
+FROM transactions as t
+JOIN accounts
+ON t.creditor = accounts.user_id 
+JOIN accounts a 
+ON t.debitor = a.user_id
+where accounts.name = 'Mom' or a.name = 'Mom'
+group by
+	a.name

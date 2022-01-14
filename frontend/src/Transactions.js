@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Moment from "react-moment";
+import FormSub from "./Form";
 import "./Transactions.css";
-function Transactions() {
+function Transactions({friends}) {
   const [name, setName] = useState("Ally");
   const [num, setNum] = useState(0);
   const [description, setDescription] = useState("");
@@ -17,7 +18,7 @@ function Transactions() {
         name: "Andy",
         date: "2022-01-04 14:08:10.310943",
         description: "hello",
-        amount: 100,
+        amount: -200,
       },
       {
         id: 1,
@@ -31,7 +32,7 @@ function Transactions() {
         name: "Andy",
         date: "2022-01-04 14:08:10.310943",
         description: "hello2",
-        amount: 300,
+        amount: -300,
       },
       {
         id: 3,
@@ -96,7 +97,7 @@ function Transactions() {
 
   return (
     <div>
-      <h3>Between</h3>
+      <h3>Transactions Between {name}</h3>
       <div className={longerThan}>
         <table>
           <thead>
@@ -136,6 +137,7 @@ function Transactions() {
           </div>
         )}
       </h3>
+      <FormSub friends={friends} currUser={name}  />
     </div>
   );
 }
