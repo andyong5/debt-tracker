@@ -4,11 +4,10 @@ const pool = new pg.Pool({
   host: "localhost",
   port: 5432,
   user: "postgres",
-  password: "Microsemi**2",
+
   database: "debt_tracker",
 });
-const url =
-  "postgres://haqtpkopukuhud:b3c4cdf5a8db41830395cebda6c17e4b414e2babf2bfa317891520efa77b9ea1@ec2-54-224-194-214.compute-1.amazonaws.com:5432/d56f1v21r5ln8k";
+const url = "";
 // const url = process.env.DATABASE_URL;
 // const pool = new pg.Pool({
 //   connectionString: url,
